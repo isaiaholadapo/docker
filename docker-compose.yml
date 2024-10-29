@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   app:
     build: .
@@ -15,9 +17,14 @@ services:
   db:
    image: postgres
    volumes:
-     - ./data/db:/var/lib/postgresql/data
+     - db_data:/var/lib/postgresql/data
+
    environment:
      - POSTGRES_DB=postgres
      - POSTGRES_USER=postgres
      - POSTGRES_PASSWORD=postgres
    container_name: postgres_db1
+
+
+volumes:
+  db_data:
